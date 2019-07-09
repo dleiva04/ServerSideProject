@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-// import Header from "../components/Layout/Header";
-
+import Navbar from "../components/Navbar";
 // import "../scss/style.scss";
 
 const Page = ({ children }) => (
   <Fragment>
+    <Navbar/>
     <main>{children}</main>
   </Fragment>
 );

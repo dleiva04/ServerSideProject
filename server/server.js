@@ -12,7 +12,12 @@ dotenv.config();
 // Set Environment
 const dev = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 3000;
-const mongoAuth = process.env.MONGO_DB_AUTH;
+//mongodb
+const mongoconn = process.env.CONN_STRING;
+const mongoAuthU = process.env.MONGO_DB_AUTH_U;
+const mongoAuthP = process.env.MONGO_DB_AUTH_P;
+const dbname = process.env.DB_NAME;
+
 
 // Next App
 const app = next({
@@ -69,23 +74,23 @@ app.prepare()
 
 		(async () => {
 			try {
-				await mongoose.connect('mongodb+srv://clustermongotest-cnm8l.mongodb.net/27017',{
-					dbName: 'DB-David',
-					useNewUrlParser:true,
-					user: 'dleiva04',
-					pass: mongoAuth
+				await mongoose.connect(mongoconn, {
+					dbName: dbname,
+					useNewUrlParser: true,
+					user: mongoAuthU,
+					pass: mongoAuthP
 				});
-				console.log('conectado');
-			}catch(error){
+
+			} catch (error) {
 				console.error(error);
 			}
-
 		})();
 
 		// finish connection	
 		server.listen(PORT, (err) => {
 			if (err) throw err;
 			console.log(`> Ready on ${PORT}`);
+			console.log(`> http://localhost:${PORT}`);
 		});
 	})
 	.catch((ex) => {
