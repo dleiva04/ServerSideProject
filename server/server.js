@@ -19,11 +19,10 @@ const app = next({
 });
 const handle = app.getRequestHandler();
 
-// Sequelize
 // const models = require('./models');
 
 /**
- * Front end Routes
+ * Frontend Routes
  */
 const getRoutes = require('./routes/routeList');
 const routes = getRoutes();
@@ -57,7 +56,7 @@ app.prepare()
 			} = parsedUrl;
 
 			/**
-			 * Pull in front end routes, and check request against those routes
+			 * Pull in frontend routes, and check request against those routes
 			 */
 			const route = routes[pathname];
 			if (route) {
@@ -66,30 +65,21 @@ app.prepare()
 			return handle(req, res);
 		});
 
+		(async () => {
+			try {
+				await mongoose.connect('mongodb+srv://clustermongotest-cnm8l.mongodb.net/27017',{
+					dbName: 'DB-David',
+					useNewUrlParser:true,
+					user: 'dleiva04',
+					pass: '$David04'
+				});
+				console.log('conectado');
+			}catch(error){
+				console.error(error);
+			}
 
-		// const uri = 'mongodb+srv://dleiva04:$David04@clustermongotest-cnm8l.mongodb.net/DB-David?retryWrites=true&w=majority';
-		// const options = {
-		// 	useNewUrlParser: true,
-		// 	useCreateIndex: true,
-		// 	useFindAndModify: false,
-		// 	autoIndex: false, // Don't build indexes	
-		// 	reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-		// 	reconnectInterval: 500, // Reconnect every 500ms
-		// 	poolSize: 10, // Maintain up to 10 socket connections
-		// 	// If not connected, return errors immediately rather than waiting for reconnect
-		// 	bufferMaxEntries: 0,
-		// 	connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
-		// 	socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-		// 	family: 4 // Use IPv4, skip trying IPv6
-		// };
-		// mongoose.connect(uri, options).then(
-		// 	() => {
-		// 		console.log('conn success')
-		// 	},
-		// 	err => {
-		// 		console.log('error', err)
-		// 	}
-		// );
+		})();
+
 		// finish connection	
 		server.listen(PORT, (err) => {
 			if (err) throw err;
