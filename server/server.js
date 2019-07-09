@@ -6,6 +6,8 @@ const {
 } = require('url');
 const mongoose = require('mongoose');
 const next = require('next');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Set Environment
 const dev = process.env.NODE_ENV || 'development';
@@ -71,7 +73,7 @@ app.prepare()
 					dbName: 'DB-David',
 					useNewUrlParser:true,
 					user: 'dleiva04',
-					pass: '$David04'
+					pass: mongoAuth
 				});
 				console.log('conectado');
 			}catch(error){
