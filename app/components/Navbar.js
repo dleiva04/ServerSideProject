@@ -1,35 +1,27 @@
-import '../scss/components/Navbar.scss';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from "@material-ui/core/IconButton";
+import Badge from '@material-ui/core/Badge';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Person from '@material-ui/icons/Person';
 
-const classes = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  nav:{
-    display: flex,
-  }
-}));
+import "../scss/components/Navbar.scss";
 
 const Navbar = () => (
-	<AppBar position='static' className={classes.nav}>
+	<AppBar position="static" className={'nav'} color="default">
 		<Toolbar>
-			<Typography variant='h6' className={classes.title}>
-				News
-			</Typography>
-			<Button color='inherit'>Login</Button>
+      <img src="../static/sf.png" alt="Solé Fashion" height={35} className={'toolbar'}/>
+      {/* <IconButton aria-label="Show 4 new mails" color="inherit">
+          <Badge badgeContent={4} color="secondary">
+            <ShoppingCart />
+          </Badge>
+        </IconButton> */}
+      <IconButton aria-label="Show 4 new mails" color="inherit">
+            <Person color="primary"/>
+        </IconButton>
 		</Toolbar>
 	</AppBar>
 );

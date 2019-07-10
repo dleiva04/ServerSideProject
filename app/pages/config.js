@@ -1,8 +1,8 @@
 import Page from '../layouts/page';
 
-import "../scss/style.scss";
+// import "../scss/style.scss";
 
-const Index = () => (
+const Config = () => (
   <Page>
     <div className="index">
       <h1>Test</h1>
@@ -10,4 +10,4 @@ const Index = () => (
   </Page>
 );
 
-export default Index;
+export default Config;

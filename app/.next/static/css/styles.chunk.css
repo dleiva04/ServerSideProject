@@ -1,9 +1,13 @@
-nav {
-  height: 120px; }
+.nav {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; }
 
-body, html {
-  margin: 0;
-  padding: 0; }
+.index {
+  height: 500px;
+  background: red;
+  margin-bottom: 2em; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/
